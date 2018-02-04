@@ -5,4 +5,3 @@ import Blog from './components/Blog';
 // import './styles/styles.scss';
 
 ReactDOM.render(<Blog />, document.getElementById('app'));
-// ReactDOM.render(<Layout content={template} />, document.getElementById('app'));

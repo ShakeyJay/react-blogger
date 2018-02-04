@@ -1,7 +1,4 @@
 import React from 'react';
-import firebase from 'firebase';
-// import io from 'socket.io';
-// const socket = io();
 
 export default class CreateProfile extends React.Component {
 
@@ -12,20 +9,11 @@ export default class CreateProfile extends React.Component {
     const password = e.target.elements.password.value;
     const username = e.target.elements.username.value;
 
-    console.log(email, password, username);
-
-    console.log("handleSubmit");
     this.signupUser(email, password, username);
-
-    
-
   }
 
 
   signupUser = (email, password, username) => {
-    console.log("In signupUser")
-    console.log(email, password, username);
-    // something wrong with the emitting of email??
     this.props.socket.emit('signup', {
       email: email,
       password: password,
@@ -33,8 +21,6 @@ export default class CreateProfile extends React.Component {
     }, () => {
       console.log("emitted signup!");
     });
-
-
   };
 
   render() {

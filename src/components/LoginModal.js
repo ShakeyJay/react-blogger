@@ -3,28 +3,6 @@ import Modal from 'react-modal';
 import CreateProfile from './CreateProfile';
 import Login from './Login';
 
-// const LoginModal = (props) => (
-//   <Modal
-//     isOpen={!!props.openModal}
-//     onRequestClose={props.handleRemoveModal}
-//     contentLabel="Selected Option"
-//     closeTimeoutMS={200}
-//     className="modal"
-//   >
-//     {/* <CreatePost handleCreatePost={props.handleCreatePost} /> */}
-//     {
-      
-//       <Login /> ||
-//       <CreateProfile />
-//     }
-//     <Login />
-//     <CreateProfile />
-//     <button className="button" onClick={props.handleRemoveModal}>Cancel</button>
-//   </Modal>
-// );
-
-// export default LoginModal;
-
 export default class LoginModal extends React.Component {
   state = {
     login: true
@@ -60,7 +38,6 @@ export default class LoginModal extends React.Component {
             socket={this.props.socket}
           /> 
         }
-        {/* <CreatePost handleCreatePost={props.handleCreatePost} /> */}
         <button className="button" onClick={this.props.handleRemoveModal}>Cancel</button>
       </Modal>
     );

@@ -35,10 +35,7 @@ io.on('connection', (socket) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(data);
-        console.log(dataNew);
         obj = JSON.parse(data); 
-        console.log(obj);
         obj.users.push({ 
           email: dataNew.email, 
           password: dataNew.password, 
@@ -58,12 +55,10 @@ io.on('connection', (socket) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(data);
-        console.log(dataNew);
         obj = JSON.parse(data);
-        console.log(obj);
         obj.posts.push({
           postTitle: dataNew.postTitle,
+          creator: dataNew.creator,
           postImg: dataNew.postImg,
           postText: dataNew.postText,
           comments: []
@@ -83,16 +78,10 @@ io.on('connection', (socket) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(data);
-        console.log(dataNew);
         obj = JSON.parse(data);
-        console.log(obj);
         for (let i = 0; i < obj.users.length; i++) {
-          console.log(dataNew.email, obj.users[i].email);
-          console.log(dataNew.password, obj.users[i].password)
           if (dataNew.email === obj.users[i].email && 
               dataNew.password === obj.users[i].password) {
-            console.log('Got Here!');
             callback();
             socket.emit('loggingIn', { username: obj.users[i].username }, () => {
               console.log('Emitted Logging In');
@@ -111,10 +100,7 @@ io.on('connection', (socket) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(data);
-        console.log(dataNew);
         obj = JSON.parse(data);
-        console.log(obj);
         let comment = { 
           commentUser: dataNew.commentUser, 
           commentMessage: dataNew.commentMessage
@@ -135,7 +121,30 @@ io.on('connection', (socket) => {
     callback();
   });
 
-
+  socket.on("repost", (dataNew, callback) => {
+    console.log(dataNew);
+    fs.readFile(db, 'utf8', (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        obj = JSON.parse(data);
+        obj.posts.push({
+          postTitle: dataNew.postTitle,
+          creator: dataNew.creator,
+          postImg: dataNew.postImg,
+          postText: dataNew.postText,
+          comments: dataNew.comments,
+          repostBy: dataNew.repostBy
+        });
+        json = JSON.stringify(obj);
+        fs.writeFile(db, json, 'utf8', callback);
+      }
+    });
+    callback();
+    socket.emit("addingPost", obj, () => {
+      console.log("emitted addingPost");
+    })
+  })
 
 
 });

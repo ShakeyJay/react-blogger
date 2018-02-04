@@ -1,45 +1,37 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-// const CommentModal = (props) => (
-//   <Modal
-//     isOpen={!!props.openModal}
-//     onRequestClose={props.handleRemoveModal}
-//     contentLabel="Comment"
-//     closeTimeoutMS={200}
-//     className="modal"
-//   >
-//     <form onSubmit={props.handleAddComment}>
-//       <textarea rows="4" cols="40" className="comment" >
-//       </textarea>
-//       <button>Post Comment</button>
-//     </form>
-//     <button className="button" onClick={props.handleRemoveModal}>Cancel</button>
-//   </Modal>
-// );
-
-// export default CommentModal;
-
 
 export default class CommentModal extends React.Component {
+  state = {
+    first: true
+  }
+
+  setup = () => {
+    let props = this.props;
+
+    this.setState(() => ({
+      firstProps: props,
+      first: false
+    }));
+  }
 
   handleAddComment = (e) => {
     e.preventDefault();
-    console.log("commentModal", e.target.elements);
     // this.props.postTitle
     const comment = e.target.elements.comment.value.trim();
-    console.log(comment);
     this.props.socket.emit('addComment', {
-      postTitle: this.props.postTitle,
-      commentUser: this.props.user,
+      postTitle: this.state.firstProps.postTitle,
+      commentUser: this.state.firstProps.username,
       commentMessage: comment
     }, () => console.log('emitted addComment'));
 
     this.props.handleAddComment(comment);
-
   }
 
   render () {
+    if (this.state.first)
+      this.setup();
     return (
       <Modal
         isOpen={!!this.props.openModal}

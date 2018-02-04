@@ -1,14 +1,10 @@
 import React from 'react';
-import * as firebase from 'firebase';
-import { SIGNUP_USER } from '../actions/types';
-
 
 export default class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
-    console.log('here');
     this.loginUser(email, password);
 
   }

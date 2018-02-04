@@ -11,7 +11,8 @@ const PostModal = (props) => (
     className="modal"
   >
     <CreatePost 
-      handleCreatePost={props.handleCreatePost} 
+      handleCreatePost={props.handleCreatePost}
+      username={props.username}
       socket={props.socket}  
     />
     <button className="button" onClick={props.handleRemoveModal}>Cancel</button>
