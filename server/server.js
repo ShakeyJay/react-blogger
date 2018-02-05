@@ -43,6 +43,10 @@ io.on('connection', (socket) => {
         }); 
         json = JSON.stringify(obj); 
         fs.writeFile(db, json, 'utf8', callback); 
+        socket.emit('loggingIn', { username: dataNew.username }, () => {
+          console.log('Emitted Logging In');
+          callback();
+        });
       }
     });
     console.log("wrote to file");

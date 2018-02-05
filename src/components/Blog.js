@@ -60,7 +60,6 @@ export default class Blog extends React.Component {
     if(!comment) {
       return 'Enter a valid comment';
     }
-    console.log("Blog", this.state.username);
     this.handleRemoveModal();
   }
 
@@ -69,7 +68,6 @@ export default class Blog extends React.Component {
   }
 
   handleLogin = (user) => {
-    console.log(user);
     if (user) {
       this.setState(() => ({username: user.username}));
     }
@@ -80,7 +78,6 @@ export default class Blog extends React.Component {
   }
 
   handleOpenLogin = () => {
-    console.log(this.state.loggingIn);
     this.setState(() => ({ loggingIn: true }));
   }
 

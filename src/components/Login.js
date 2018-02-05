@@ -16,7 +16,6 @@ export default class Login extends React.Component {
     }, () => {
       console.log("emitted signup!");
       this.props.socket.on('loggingIn', (data, callback) => {
-        console.log('Login.js', data);
         this.props.handleLogin({username: data.username});
         callback();
       });

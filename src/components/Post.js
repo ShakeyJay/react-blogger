@@ -65,7 +65,6 @@ export default class Post extends React.Component {
     return (
       <div className="post">
         <h3 className="post__header">
-        {console.log(this.props.creator)}
           {this.props.postTitle} posted by {this.props.creator} 
           {!!this.props.repost && 
           <span> reposted by {this.props.repost}</span>}
@@ -74,6 +73,7 @@ export default class Post extends React.Component {
         <p className="post__text">{this.props.postText}</p>
         {this.props.comments && this.props.comments.map((comment, idx) => (
           <Comment
+            key={idx}
             count={idx}
             comment={comment.commentMessage}
             username={comment.commentUser || "Anonymous"}

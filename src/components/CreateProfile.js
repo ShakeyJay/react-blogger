@@ -20,6 +20,10 @@ export default class CreateProfile extends React.Component {
       username: username 
     }, () => {
       console.log("emitted signup!");
+      this.props.socket.on('loggingIn', (data, callback) => {
+        this.props.handleLogin({ username: data.username });
+        callback();
+      });
     });
   };
 

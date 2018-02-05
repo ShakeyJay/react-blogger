@@ -35,6 +35,7 @@ export default class LoginModal extends React.Component {
           /> : 
           <CreateProfile 
             handleRemoveModal={this.props.handleRemoveModal}
+            handleLogin={this.props.handleLogin}
             socket={this.props.socket}
           /> 
         }
