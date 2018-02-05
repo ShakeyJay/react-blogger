@@ -55,17 +55,23 @@ export default class CreatePost extends React.Component {
     }
 
     return (
-      <div>
-        {this.state.error && <p className="add-post-error">{this.state.error}</p>}
-        <form className="add-post" onSubmit={this.handleCreatePost}>
-          <label htmlFor="add-post__title">Title:</label>
-          <input className="add-post__title" id="add-post__title" type="text" name="post_title" />
-          <label htmlFor="add-post__text">Content:</label>
-          <textarea className="add-post__text" id="add-post__text" name="post_text" />
-          <input type="file" onChange={this.handleImageChange} />
-          <button className="button">Publish Post</button>
+      <div className="create-post">
+        {this.state.error && <p className="create-post-error">{this.state.error}</p>}
+        <form className="modal__body" onSubmit={this.handleCreatePost}>
+          <div className="create-post__input">
+            <label htmlFor="create-post__title">Title:</label>
+            <input id="create-post__title" type="text" name="post_title" />
+          </div>
+          <div className="create-post__input">
+            <label htmlFor="create-post__text">Content:</label>
+            <textarea id="create-post__text" name="post_text" />
+          </div>
+          <div className="create-post__input">
+            <input type="file" onChange={this.handleImageChange} /><br />
+            <button className="button">Publish Post</button>
+          </div>
         </form>
-        {$imagePreview}
+        {/* {$imagePreview} */}
       </div>
     );
   }

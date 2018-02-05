@@ -26,13 +26,14 @@ export default class Login extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="modal__body">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="email">Email: </label>
-          <input id="email" type="text" name="email" />
-          <label htmlFor="password">Password: </label>
-          <input id="password" type="password" name="password" />
-          <button onClick={this.props.handleRemoveModal}>Log In</button>
+          
+          <label className="modal__body" htmlFor="email">Email: </label>
+          <input className="modal__body" id="email" type="text" name="email" /><br/>
+          <label className="modal__body" htmlFor="password">Password: </label>
+          <input className="modal__body" id="password" type="password" name="password" /><br/>
+          <button className="button" onClick={this.props.handleRemoveModal}>Log In</button>
         </form>
       </div>
     );

@@ -25,18 +25,24 @@ export default class CreateProfile extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="modal__body">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="email">Email: </label>
-          <input id="email" type="text" name="email" />
-          <label htmlFor="password">Password: </label>
-          <input id="password" type="password" name="password" />
-          <label htmlFor="username">Username:</label>
-          <input id="username" type="text" name="username" />
-          <button onClick={this.props.handleRemoveModal}>Sign up</button>
+          <div>
+            <label className="modal__body" htmlFor="email">Email: </label>
+            <input className="modal__body" id="email" type="text" name="email" />
+          </div>
+          <div>
+            <label className="modal__body" htmlFor="password">Password: </label>
+            <input className="modal__body" id="password" type="password" name="password" />
+          </div>
+          <div>
+            <label className="modal__body" htmlFor="username">Username:</label>
+            <input className="modal__body" id="username" type="text" name="username" />
+          </div>
+          <button className="button" onClick={this.props.handleRemoveModal}>Sign up</button>
         </form>    
       </div>
     );
   }
 
-}
+} 

@@ -3,7 +3,7 @@ import Post from './Post';
 
 
 const Posts = (props) => (
-  <div>
+  <div className="widget">
     <div className="widget-header">
       <h3 className="widget-header__title">Community Posts</h3>
     </div>

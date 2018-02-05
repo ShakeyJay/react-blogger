@@ -64,7 +64,7 @@ export default class Post extends React.Component {
       
     return (
       <div className="post">
-        <h3>
+        <h3 className="post__header">
         {console.log(this.props.creator)}
           {this.props.postTitle} posted by {this.props.creator} 
           {!!this.props.repost && 
@@ -81,12 +81,12 @@ export default class Post extends React.Component {
         ))}
         {!!this.state.comment && <form onSubmit={this.handleAddComment}>
           <input type="text" name="comment" />
-          <button>Publish</button>
+          <button className="button">Publish</button>
         </form>}
         {!!!this.state.comment && 
         <div>
-          <button onClick={this.handleComment}>Comment</button>
-          {!!this.props.username && <button onClick={this.handleRepost}>Repost</button>}
+          <button className="button" onClick={this.handleComment}>Comment</button>
+          {!!this.props.username && <button className="button" onClick={this.handleRepost}>Repost</button>}
         </div>
         }        
       </div>

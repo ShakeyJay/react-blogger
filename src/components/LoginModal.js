@@ -25,8 +25,8 @@ export default class LoginModal extends React.Component {
         closeTimeoutMS={200}
         className="modal"
       >
-        <button onClick={this.useLogin}>Log In</button>
-        <button onClick={this.useSignup}>Sign Up</button>
+        <button className="button" onClick={this.useLogin}>Log In</button>
+        <button className="button" onClick={this.useSignup}>Sign Up</button>
         {this.state.login ? 
           <Login 
             handleRemoveModal={this.props.handleRemoveModal}

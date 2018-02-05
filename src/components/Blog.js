@@ -93,15 +93,17 @@ export default class Blog extends React.Component {
           handleLogout={this.handleLogout}
           username={this.state.username}
         />
-        <div>
-          <Posts 
-            posts={this.state.posts}
-            handleComment={this.handleComment}
-            handleAddComment={this.handleAddComment}
-            username={this.state.username}
-            comment={this.state.comment}
-            socket={socket}
-          />
+        <div className="container">
+          {/* <div className="widget"> */}
+            <Posts
+              posts={this.state.posts}
+              handleComment={this.handleComment}
+              handleAddComment={this.handleAddComment}
+              username={this.state.username}
+              comment={this.state.comment}
+              socket={socket}
+            />
+        {/* </div> */}
         </div>
         <PostModal 
           openModal={this.state.creating}

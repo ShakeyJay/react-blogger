@@ -50,7 +50,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on("createPost", (dataNew, callback) => {
-    console.log(dataNew);
     fs.readFile(db, 'utf8', (err, data) => {
       if (err) {
         console.log(err);
@@ -95,7 +94,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on("addComment", (dataNew, callback) => {
-    console.log(dataNew);
     fs.readFile(db, 'utf8', (err, data) => {
       if (err) {
         console.log(err);
@@ -122,7 +120,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on("repost", (dataNew, callback) => {
-    console.log(dataNew);
     fs.readFile(db, 'utf8', (err, data) => {
       if (err) {
         console.log(err);
